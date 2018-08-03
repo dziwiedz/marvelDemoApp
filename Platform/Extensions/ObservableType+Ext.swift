@@ -9,17 +9,16 @@
 
 import Foundation
 import RxSwift
-import ObjectMapper
 import Domain
 
 extension ObservableType {
     
-    func mapObject<T : ImmutableMappable>(toType type: T.Type) -> Observable<T> {
+    func mapObject<T : Decodable>(toType type: T.Type) -> Observable<T> {
         return flatMap { data -> Observable<T> in
-            guard let json = data as? [String: Any],
-                let object = try? Mapper<T>().map(JSON: json)
-            else {
-                throw ParseError.parseError
+            guard let data = data as? Data,
+                let object = try? JSONDecoder().decode(T.self, from: data)
+                else {
+                    throw ParseError()
             }
             return Observable.just(object)
         }

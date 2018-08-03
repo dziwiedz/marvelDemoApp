@@ -8,8 +8,8 @@
 
 import Foundation
 
-internal struct ApiRouter {
-    static let baseUrl: URL = URL(string:"http://gameofthrones.wikia.com/api/v1/#!/")!
-    static let webPageUrl: URL = URL(string: "http://gameofthrones.wikia.com")!
+public struct ApiRouter {
+    public static let baseUrl: URL = URL(string:"http://gameofthrones.wikia.com/api/v1/#!/")!
+    public static let webPageUrl: URL = URL(string: "http://gameofthrones.wikia.com")!
     
 }

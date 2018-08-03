@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import Domain
+
+final class ArticlesUseCaseProvider : Domain.ArticlesUseCaseProvider {
+    
+    private let requester: ArticleRequster
+    private let networkProvider: ArticleNetworkProvider
+    
+    public init() {
+        self.requester = ArticleRequster()
+        self.networkProvider = ArticleNetworkProvider(requester: requester)
+    }
+    
+    public func provideArticleUseCase() -> Domain.ArticlesUseCase {
+        return ArticlesUseCase(articleProvider: networkProvider)
+    }
+    
+    
+}

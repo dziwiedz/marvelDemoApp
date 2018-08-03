@@ -24,13 +24,13 @@ extension Article: Decodable {
     }
     
     private enum ArticleCodingKeys: String, CodingKey {
-        case id = "id"
-        case abstract = "abstract"
+        case id
+        case abstract
         case thumbnailUrl = "thumbnail"
-        case title = "title"
-        case url = "url"
-        case revision = "revision"
-        case type = "type"
+        case title
+        case url
+        case revision
+        case type 
         case originalDimension = "original_dimensions"
     }
 }

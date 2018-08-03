@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+public protocol ArticlesUseCaseProvider {
+    func provideArticleUseCase() -> ArticlesUseCase
+}

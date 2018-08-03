@@ -6,4 +6,18 @@
 //  Copyright © 2018 Niedzwiedz. All rights reserved.
 //
 
-import Foundation
+import Alamofire
+
+internal protocol ApiGetting : ApiCalling {
+    
+}
+
+extension ApiGetting {
+    var encoding: ParameterEncoding {
+        return JSONEncoding.default
+    }
+    
+    var method: HTTPMethod {
+        return .get
+    }
+}

@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+enum FilterScope : Int {
+    case all = 0
+    case favorites
+}

@@ -7,3 +7,19 @@
 //
 
 import Foundation
+import Domain
+
+public final class UseCaseProvider : Domain.UseCaseProvider {
+    
+    private let articlesCaseProvider: ArticlesUseCaseProvider
+    
+    public init() {
+        self.articlesCaseProvider = ArticlesUseCaseProvider()
+    }
+    
+    public func makeArticleUseCase() -> Domain.ArticlesUseCase {
+        return articlesCaseProvider.provideArticleUseCase()
+    }
+    
+    
+}

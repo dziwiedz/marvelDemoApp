@@ -6,4 +6,25 @@
 //  Copyright © 2018 Niedzwiedz. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+import Domain
+
+protocol ArticleNetworkProviding {
+    func provideArticles() -> Observable<[Article]>
+}
+
+final class ArticleNetworkProvider: ArticleNetworkProviding {
+    
+    private let requester: ApiGetting
+    
+    init(requester: ApiGetting) {
+        self.requester = requester
+    }
+    
+    func provideArticles() -> Observable<[Article]> {
+        return requester
+            .makeRequest()
+            .mapObject(toType: ArticlesResponse.self)
+            .map { $0.items }
+    }
+}

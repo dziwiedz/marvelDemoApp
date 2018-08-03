@@ -11,14 +11,14 @@ import Nimble
 import Domain
 @testable import Platform
 
-class ArticleMappingSpec: QuickSpec {
-    let fileName = "Article"
+class ResponseMappingSpec: QuickSpec {
+    let fileName = "ResponseSample"
     
     override func spec() {
         describe("Article mapping test") {
-            let data = JsonObjectLoader<Article>.loadObjectData(fromJsonFileName: fileName)
+            let data = JsonObjectLoader<ArticlesResponse>.loadObjectData(fromJsonFileName: fileName)
             it("it should not throw error", closure: {
-                expect{ try JSONDecoder().decode(Article.self, from: data) }.toNot(throwError())
+                expect{ try JSONDecoder().decode(ArticlesResponse.self, from: data) }.toNot(throwError())
             })
         }
     }

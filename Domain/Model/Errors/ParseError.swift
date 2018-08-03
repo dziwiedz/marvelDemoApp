@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+
+public struct ParseError : Error {
+    public init() {}
+    
+    var localizedDescription: String {
+        return "Error while parsing object"
+    }
+}

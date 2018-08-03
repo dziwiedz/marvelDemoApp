@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import Domain
+@testable import DemoApp
+
+class MainNavigatorMock: MainNavigating {
+    var invokedToDetail: Bool = false
+    func toDetail(of article: ArticleDTO) {
+        invokedToDetail = true
+    }
+}

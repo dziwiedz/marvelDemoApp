@@ -6,4 +6,8 @@
 //  Copyright © 2018 Niedzwiedz. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+
+public protocol ArticlesUseCase {
+    func getArticles() -> Observable<[ArticleDTO]>
+}

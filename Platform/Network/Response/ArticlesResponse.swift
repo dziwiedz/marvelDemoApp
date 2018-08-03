@@ -7,3 +7,8 @@
 //
 
 import Foundation
+import Domain
+
+internal struct ArticlesResponse : Decodable {
+    let items: [Article]
+}

@@ -6,4 +6,20 @@
 //  Copyright © 2018 Niedzwiedz. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol DetailNavigating {
+    func toMain()
+}
+
+final class DetailNavigator: DetailNavigating {
+    
+    private let navigationController: UINavigationController
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+    
+    func toMain() {
+        navigationController.popViewController(animated: true)
+    }
+}

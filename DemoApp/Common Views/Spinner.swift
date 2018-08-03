@@ -9,61 +9,29 @@
 import UIKit
 import SnapKit
 
-public class Spinner: UIView {
+final class Spinner: UIView {
+    
+    //    MARK: - Subviews
     
     let indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     let label: UILabel = UILabel()
     
+    //    MARK: - Variables
+    
     public var text: String? {
-        get {
-            return label.text
-        }
-        set {
-            label.text = newValue
-        }
+        get { return label.text }
+        set { label.text = newValue }
     }
     
     public var color: UIColor {
-        get {
-            return label.textColor
-        }
+        get { return label.textColor }
         set {
             label.textColor = newValue
             indicator.color = newValue
-            
         }
     }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(indicator)
-        addSubview(label)
-        configureLayout()
-        configureLabel()
-        self.backgroundColor = UIColor.demoBlack.withAlphaComponent(0.7)
-        self.layer.cornerRadius = 16
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func configureLayout() {
-        indicator.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.width.height.equalTo(LayoutConstants.thumbnailHeight)
-        }
-        label.snp.makeConstraints { (make) in
-            make.top.equalTo(indicator.snp.bottom)
-            make.centerX.equalToSuperview()
-        }
-    }
-    
-    private func configureLabel() {
-        label.textAlignment = .center
-        label.textColor = UIColor.demoWhite
-        indicator.color = UIColor.demoWhite
-    }
+    //    MARK: - Public methods
     
     public func startAnimating() {
         indicator.startAnimating()
@@ -81,5 +49,40 @@ public class Spinner: UIView {
             self?.isHidden = true
             self?.indicator.stopAnimating()
         }
+    }
+    
+    //    MARK: - Initializers
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(indicator)
+        addSubview(label)
+        configureLayout()
+        configureLabel()
+        self.backgroundColor = UIColor.demoBlack.withAlphaComponent(0.7)
+        self.layer.cornerRadius = 16
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //    MARK: - Private methods
+    
+    private func configureLayout() {
+        indicator.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(LayoutConstants.spinnerHeight)
+        }
+        label.snp.makeConstraints { (make) in
+            make.top.equalTo(indicator.snp.bottom)
+            make.centerX.equalToSuperview()
+        }
+    }
+    
+    private func configureLabel() {
+        label.textAlignment = .center
+        label.textColor = .demoWhite
+        indicator.color = .demoWhite
     }
 }
